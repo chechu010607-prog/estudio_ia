@@ -136,7 +136,7 @@ if "chat_session" not in st.session_state:
     """
     
     st.session_state.chat_session = client.chats.create(
-        model='models/gemini-1.5-flash', # Recomiendo flash 1.5 por estabilidad
+        model='models/gemini-3-flash-preview', # Recomiendo flash 1.5 por estabilidad
         config=types.GenerateContentConfig(
             tools=mis_herramientas,
             system_instruction=instrucciones,
@@ -167,4 +167,5 @@ if pregunta := st.chat_input("Pregunta sobre tus apuntes..."):
                 st.markdown(texto_respuesta)
                 st.session_state.mensajes.append({"rol": "assistant", "texto": texto_respuesta})
             except Exception as e:
+
                 st.error(f"Error: {e}")
